@@ -19,12 +19,15 @@ void inputfile() {								// Fungsi untuk input file
 	sodoku.printSodoku();
 	cout << endl;
 
-	sodoku.solveSodoku();
+	if (sodoku.solveSodoku())
+	{
+		cout << "Masukan nama file output: ";
+		cin >> fileout;
 
-	cout << "Masukan nama file output: ";
-	cin >> fileout;
+		sodoku.foutSodoku(fileout);
+	}
+	else cout <<"Tidak ada solusi" << endl;
 
-	sodoku.foutSodoku(fileout);
 }
 
 void inputmanual() {								//Fungsi untuk input manual
@@ -35,10 +38,12 @@ void inputmanual() {								//Fungsi untuk input manual
 
 	cout << endl;
 
-	if(sodoku.solveSodoku() == true);
-
-	cout << "Solusinya adalah " << endl;
-	sodoku.printSodoku();
+	if(sodoku.solveSodoku() == true)
+	{
+		cout << "Solusinya adalah " << endl;
+		sodoku.printSodoku();
+	}
+	else cout << "tidak ada solusi" << endl;
 }
 
 int main() {
